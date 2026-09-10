@@ -29,13 +29,9 @@ A top-down, procedurally generated dungeon crawler built in Godot 4 with an inse
 
 
 | Action | Input |
-
 |---|---|
-
 | Move | `WASD` / Arrow keys |
-
 | Aim & Shoot | Mouse position / Left click |
-
 | Pause | `Esc` |
 
 
