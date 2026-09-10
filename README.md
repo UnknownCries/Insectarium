@@ -4,6 +4,8 @@
 
 A top-down, procedurally generated dungeon crawler built in Godot 4 with an insect theme.
 
+All sprites are original and created in Aseprite.
+
 
 
 ## Gameplay
