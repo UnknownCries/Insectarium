@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://eosq66gcaefh"]
+
+[ext_resource type="Script" uid="uid://bsuq1att4yvca" path="res://scripts/dungeon/room_scene_base.gd" id="1_1wy51"]
+
+[node name="RoomBase1x1_empty" type="Node2D" unique_id=874255273]
+script = ExtResource("1_1wy51")
+enemies_per_room_min = 0
+enemies_per_room_max = 0
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1691994782]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=797424134]
+
+[node name="DoorMarkers" type="Node2D" parent="." unique_id=71012593]
+
+[node name="Obstacles" type="Node2D" parent="." unique_id=93190916]

@@ -1,0 +1,68 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/dungeon/hud.gd" id="1_hud"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Control" type="Control" parent="."]
+mouse_filter = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="Control"]
+offset_left = 4.0
+offset_top = 4.0
+theme_override_constants/separation = 2
+
+[node name="HPBar" type="Control" parent="Control/VBox"]
+custom_minimum_size = Vector2(70, 11)
+
+[node name="Background" type="ColorRect" parent="Control/VBox/HPBar"]
+offset_right = 70.0
+offset_bottom = 11.0
+color = Color(0.15, 0.12, 0.10, 1)
+
+[node name="Fill" type="ColorRect" parent="Control/VBox/HPBar"]
+offset_right = 70.0
+offset_bottom = 11.0
+color = Color(0.8, 0.15, 0.15, 1)
+
+[node name="HPLabel" type="Label" parent="Control/VBox/HPBar"]
+offset_right = 70.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "5 / 5"
+
+[node name="DamageLabel" type="Label" parent="Control/VBox"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 9
+text = "Damage: 1"
+
+[node name="FireRateLabel" type="Label" parent="Control/VBox"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 9
+text = "Fire Rate: 2.0/s"
+
+[node name="SpeedLabel" type="Label" parent="Control/VBox"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 9
+text = "Speed: 200"
+
+[node name="RangeLabel" type="Label" parent="Control/VBox"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 9
+text = "Range: 150"

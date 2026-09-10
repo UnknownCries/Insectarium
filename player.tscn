@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dsoqq0uprf4fr"]
+
+[ext_resource type="Script" uid="uid://t72xrqmcejdm" path="res://scripts/dungeon/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://xhbmop8vhsnh" path="res://bullet.tscn" id="2_onrkg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/spider.png" id="3_spider"]
+[ext_resource type="AudioStream" path="res://assets/audio/bullet_sound.wav" id="4_shoot_sfx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pt5dm"]
+radius = 8.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1309697226]
+collision_layer = 5
+collision_mask = 3
+script = ExtResource("1_4flbx")
+speed = 150.0
+bullet_scene = ExtResource("2_onrkg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=883290433]
+shape = SubResource("CircleShape2D_pt5dm")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1038089550]
+texture = ExtResource("3_spider")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_shoot_sfx")

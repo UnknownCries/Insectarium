@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://xhbmop8vhsnh"]
+
+[ext_resource type="Script" uid="uid://b6g76xu38x2em" path="res://scripts/dungeon/bullet.gd" id="1_v7oki"]
+[ext_resource type="Texture2D" path="res://assets/sprites/projectiles/web_bullet.png" id="2_web"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xepy2"]
+radius = 3.0
+
+[node name="Bullet" type="Area2D" unique_id=1585720063]
+collision_layer = 8
+collision_mask = 135
+script = ExtResource("1_v7oki")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1349078817]
+texture = ExtResource("2_web")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1760826209]
+shape = SubResource("CircleShape2D_xepy2")

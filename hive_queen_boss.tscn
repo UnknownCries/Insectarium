@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://08pxxlpymxw6"]
+
+[ext_resource type="Script" uid="uid://cagrlakqwsdnp" path="res://scripts/dungeon/hive_queen_boss.gd" id="1"]
+[ext_resource type="PackedScene" path="res://hive_attack_minion.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://boss_guard_minion.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://b82qtw3ekt2sw" path="res://assets/sprites/bosses/hive_queen_boss/queen_bee.png" id="4_queen"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 16.0
+
+[node name="HiveQueenBoss" type="CharacterBody2D" unique_id=2112431338]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("1")
+attack_minion_scene = ExtResource("2")
+guard_minion_scene = ExtResource("3")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1714440271]
+texture = ExtResource("4_queen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1377548080]
+shape = SubResource("CircleShape2D_1")

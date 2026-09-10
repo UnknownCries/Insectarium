@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b45suigai7bnq"]
+
+[ext_resource type="Script" uid="uid://b656kbbk6k05c" path="res://scripts/dungeon/jumper_enemy.gd" id="1"]
+[ext_resource type="PackedScene" path="res://landing_telegraph.tscn" id="2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/jumper_enemy/cricket.png" id="3_cricket"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 8.0
+
+[node name="JumperEnemy" type="CharacterBody2D" unique_id=1771160479]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("1")
+telegraph_scene = ExtResource("2")
+attack_cooldown = 2.0
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=634774075]
+texture = ExtResource("3_cricket")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2034541790]
+shape = SubResource("CircleShape2D_1")

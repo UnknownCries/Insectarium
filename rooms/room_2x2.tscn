@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://4ncijhqqw3dd"]
+
+[ext_resource type="Script" uid="uid://bsuq1att4yvca" path="res://scripts/dungeon/room_scene_base.gd" id="1_lmsc4"]
+[ext_resource type="PackedScene" uid="uid://dnlbm7celidtk" path="res://melee_enemy.tscn" id="2_oy3ji"]
+[ext_resource type="PackedScene" uid="uid://2yoh5hm00jya" path="res://ranged_enemy.tscn" id="3_oy3ji"]
+[ext_resource type="PackedScene" path="res://jumper_enemy.tscn" id="4_jumpr"]
+
+[node name="RoomBase2x2" type="Node2D" unique_id=1397506814]
+script = ExtResource("1_lmsc4")
+enemy_pool = Array[PackedScene]([ExtResource("2_oy3ji"), ExtResource("3_oy3ji"), ExtResource("4_jumpr")])
+enemies_per_room_min = 8
+enemies_per_room_max = 10
+
+[node name="Visuals" type="Node2D" parent="." unique_id=459045533]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1004305216]
+collision_layer = 129
+
+[node name="DoorMarkers" type="Node2D" parent="." unique_id=447709501]
+
+[node name="Obstacles" type="Node2D" parent="." unique_id=1473755919]

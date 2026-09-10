@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bqde1w3sln0tq"]
+
+[ext_resource type="Script" uid="uid://bsuq1att4yvca" path="res://scripts/dungeon/room_scene_base.gd" id="1_w6ugj"]
+[ext_resource type="PackedScene" uid="uid://dnlbm7celidtk" path="res://melee_enemy.tscn" id="2_kmhwq"]
+[ext_resource type="PackedScene" uid="uid://2yoh5hm00jya" path="res://ranged_enemy.tscn" id="3_kmhwq"]
+[ext_resource type="PackedScene" path="res://worm_boss.tscn" id="4_bossw"]
+[ext_resource type="PackedScene" path="res://hive_queen_boss.tscn" id="5_hiveq"]
+[ext_resource type="PackedScene" path="res://flea_boss.tscn" id="6_fleab"]
+[ext_resource type="PackedScene" path="res://jumper_enemy.tscn" id="7_jumpr"]
+
+[node name="RoomBase1x1" type="Node2D" unique_id=874255273]
+script = ExtResource("1_w6ugj")
+enemy_pool = Array[PackedScene]([ExtResource("2_kmhwq"), ExtResource("3_kmhwq"), ExtResource("7_jumpr")])
+enemies_per_room_min = 2
+enemies_per_room_max = 3
+boss_pool = Array[PackedScene]([ExtResource("4_bossw"), ExtResource("5_hiveq"), ExtResource("6_fleab")])
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1691994782]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=797424134]
+collision_layer = 129
+
+[node name="DoorMarkers" type="Node2D" parent="." unique_id=71012593]
+
+[node name="Obstacles" type="Node2D" parent="." unique_id=93190916]

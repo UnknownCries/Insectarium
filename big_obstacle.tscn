@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c2g1yodv0dkcp"]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/obstacles/big_boulder.png" id="1_boulder"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xepy2"]
+size = Vector2(40, 40)
+
+[node name="BigObstacle" type="StaticBody2D" unique_id=1218839117]
+collision_layer = 129
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=519970851]
+texture = ExtResource("1_boulder")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1790603054]
+shape = SubResource("RectangleShape2D_xepy2")

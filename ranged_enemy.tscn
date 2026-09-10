@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://2yoh5hm00jya"]
+
+[ext_resource type="Script" uid="uid://yx7uom6585k3" path="res://scripts/dungeon/ranged_enemy.gd" id="2_mxs0p"]
+[ext_resource type="PackedScene" path="res://bullet_toxic.tscn" id="3_b6d6m"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/ranged_enemy/bombardier_beetle.png" id="4_bombardier"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_otv3p"]
+radius = 8.0
+
+[node name="RangedEnemy" type="CharacterBody2D" unique_id=204458779]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("2_mxs0p")
+bullet_scene = ExtResource("3_b6d6m")
+fire_rate = 1.0
+attack_range = 160.0
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1205393007]
+texture = ExtResource("4_bombardier")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=516891209]
+shape = SubResource("CircleShape2D_otv3p")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=975302928]
+collision_mask = 128

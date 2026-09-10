@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="RoomTemplate" format=3 uid="uid://nkqujpa1x76n"]
+
+[ext_resource type="Script" uid="uid://dosj80wis6uyf" path="res://scripts/dungeon/door_slot.gd" id="1_3ojlw"]
+[ext_resource type="Script" uid="uid://m6v26k7375n5" path="res://scripts/dungeon/obstacle_entry.gd" id="2_ndluc"]
+[ext_resource type="PackedScene" uid="uid://hyyn0rr2ag5d" path="res://small_obstacle.tscn" id="3_6cd72"]
+[ext_resource type="PackedScene" uid="uid://bqde1w3sln0tq" path="res://rooms/room_1x1.tscn" id="4_3ojlw"]
+[ext_resource type="Script" uid="uid://do2opr8xt0mpy" path="res://scripts/dungeon/room_template.gd" id="5_i4aws"]
+
+[sub_resource type="Resource" id="Resource_rrosf"]
+script = ExtResource("1_3ojlw")
+direction = 1
+
+[sub_resource type="Resource" id="Resource_8ohia"]
+script = ExtResource("1_3ojlw")
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_unvj6"]
+script = ExtResource("1_3ojlw")
+direction = 2
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_vjjqd"]
+script = ExtResource("1_3ojlw")
+direction = 3
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_dixnb"]
+script = ExtResource("2_ndluc")
+local_position = Vector2(160, 54)
+scene = ExtResource("3_6cd72")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[sub_resource type="Resource" id="Resource_8bcqv"]
+script = ExtResource("2_ndluc")
+local_position = Vector2(160, 126)
+scene = ExtResource("3_6cd72")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[resource]
+script = ExtResource("5_i4aws")
+obstacles = Array[ExtResource("2_ndluc")]([SubResource("Resource_dixnb"), SubResource("Resource_8bcqv")])
+door_slots = Array[ExtResource("1_3ojlw")]([SubResource("Resource_rrosf"), SubResource("Resource_8ohia"), SubResource("Resource_unvj6"), SubResource("Resource_vjjqd")])
+scene = ExtResource("4_3ojlw")
+weight = 10.0
+metadata/_custom_type_script = "uid://do2opr8xt0mpy"

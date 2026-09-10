@@ -1,0 +1,95 @@
+[gd_resource type="Resource" script_class="RoomTemplate" format=3 uid="uid://cjfw047egpev2"]
+
+[ext_resource type="Script" uid="uid://dosj80wis6uyf" path="res://scripts/dungeon/door_slot.gd" id="1_cnklv"]
+[ext_resource type="Script" uid="uid://m6v26k7375n5" path="res://scripts/dungeon/obstacle_entry.gd" id="2_kkeiu"]
+[ext_resource type="PackedScene" uid="uid://hyyn0rr2ag5d" path="res://small_obstacle.tscn" id="3_5nmtr"]
+[ext_resource type="PackedScene" uid="uid://dti1mla7n2oqb" path="res://rooms/room_1x2.tscn" id="4_cnklv"]
+[ext_resource type="Script" uid="uid://do2opr8xt0mpy" path="res://scripts/dungeon/room_template.gd" id="5_p3hdf"]
+
+[sub_resource type="Resource" id="Resource_v6u5g"]
+script = ExtResource("1_cnklv")
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_x0ytb"]
+script = ExtResource("1_cnklv")
+direction = 3
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_opyk5"]
+script = ExtResource("1_cnklv")
+direction = 2
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_ud2us"]
+script = ExtResource("1_cnklv")
+cell = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_fnuoh"]
+script = ExtResource("1_cnklv")
+cell = Vector2i(1, 0)
+direction = 1
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_hbrnc"]
+script = ExtResource("1_cnklv")
+cell = Vector2i(1, 0)
+direction = 2
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_6crcs"]
+script = ExtResource("2_kkeiu")
+local_position = Vector2(64, 48)
+scene = ExtResource("3_5nmtr")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[sub_resource type="Resource" id="Resource_d4xow"]
+script = ExtResource("2_kkeiu")
+local_position = Vector2(256, 48)
+scene = ExtResource("3_5nmtr")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[sub_resource type="Resource" id="Resource_07bqr"]
+script = ExtResource("2_kkeiu")
+local_position = Vector2(64, 132)
+scene = ExtResource("3_5nmtr")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[sub_resource type="Resource" id="Resource_vupip"]
+script = ExtResource("2_kkeiu")
+local_position = Vector2(256, 132)
+scene = ExtResource("3_5nmtr")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[sub_resource type="Resource" id="Resource_80wn4"]
+script = ExtResource("2_kkeiu")
+local_position = Vector2(384, 48)
+scene = ExtResource("3_5nmtr")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[sub_resource type="Resource" id="Resource_2lni8"]
+script = ExtResource("2_kkeiu")
+local_position = Vector2(576, 48)
+scene = ExtResource("3_5nmtr")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[sub_resource type="Resource" id="Resource_dlpsu"]
+script = ExtResource("2_kkeiu")
+local_position = Vector2(384, 132)
+scene = ExtResource("3_5nmtr")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[sub_resource type="Resource" id="Resource_6rgmt"]
+script = ExtResource("2_kkeiu")
+local_position = Vector2(576, 132)
+scene = ExtResource("3_5nmtr")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[resource]
+script = ExtResource("5_p3hdf")
+obstacles = Array[ExtResource("2_kkeiu")]([SubResource("Resource_6crcs"), SubResource("Resource_d4xow"), SubResource("Resource_07bqr"), SubResource("Resource_vupip"), SubResource("Resource_80wn4"), SubResource("Resource_2lni8"), SubResource("Resource_dlpsu"), SubResource("Resource_6rgmt")])
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+door_slots = Array[ExtResource("1_cnklv")]([SubResource("Resource_v6u5g"), SubResource("Resource_x0ytb"), SubResource("Resource_opyk5"), SubResource("Resource_ud2us"), SubResource("Resource_fnuoh"), SubResource("Resource_hbrnc")])
+scene = ExtResource("4_cnklv")
+weight = 3.0
+metadata/_custom_type_script = "uid://do2opr8xt0mpy"

@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/dungeon/bullet.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/projectiles/blood_bullet.png" id="2_blood"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 3.0
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 8
+collision_mask = 135
+script = ExtResource("1_script")
+
+[node name="Visual" type="Sprite2D" parent="."]
+texture = ExtResource("2_blood")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")

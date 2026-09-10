@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="RoomTemplate" format=3 uid="uid://bxwlj3khi03po"]
+
+[ext_resource type="Script" uid="uid://dosj80wis6uyf" path="res://scripts/dungeon/door_slot.gd" id="1_4unmu"]
+[ext_resource type="PackedScene" uid="uid://cmlnnpm1wpljy" path="res://rooms/room_l.tscn" id="2_37581"]
+[ext_resource type="Script" uid="uid://do2opr8xt0mpy" path="res://scripts/dungeon/room_template.gd" id="2_c18p8"]
+[ext_resource type="Script" uid="uid://m6v26k7375n5" path="res://scripts/dungeon/obstacle_entry.gd" id="2_tf3s2"]
+
+[sub_resource type="Resource" id="Resource_37581"]
+script = ExtResource("1_4unmu")
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_tf3s2"]
+script = ExtResource("1_4unmu")
+direction = 3
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_gqoov"]
+script = ExtResource("1_4unmu")
+direction = 2
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_sr57k"]
+script = ExtResource("1_4unmu")
+cell = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_wh6xf"]
+script = ExtResource("1_4unmu")
+cell = Vector2i(1, 0)
+direction = 1
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_y6qfe"]
+script = ExtResource("1_4unmu")
+cell = Vector2i(1, 1)
+direction = 1
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_wjtdr"]
+script = ExtResource("1_4unmu")
+cell = Vector2i(1, 1)
+direction = 3
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_pn1gu"]
+script = ExtResource("1_4unmu")
+cell = Vector2i(1, 1)
+direction = 2
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[resource]
+script = ExtResource("2_c18p8")
+footprint = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1)])
+door_slots = Array[ExtResource("1_4unmu")]([SubResource("Resource_37581"), SubResource("Resource_tf3s2"), SubResource("Resource_gqoov"), SubResource("Resource_sr57k"), SubResource("Resource_wh6xf"), SubResource("Resource_y6qfe"), SubResource("Resource_wjtdr"), SubResource("Resource_pn1gu")])
+scene = ExtResource("2_37581")
+metadata/_custom_type_script = "uid://do2opr8xt0mpy"

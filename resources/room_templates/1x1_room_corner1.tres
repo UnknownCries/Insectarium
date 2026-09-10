@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="RoomTemplate" format=3 uid="uid://c13bt8n7q6cdx"]
+
+[ext_resource type="Script" uid="uid://dosj80wis6uyf" path="res://scripts/dungeon/door_slot.gd" id="1_8vypi"]
+[ext_resource type="Script" uid="uid://m6v26k7375n5" path="res://scripts/dungeon/obstacle_entry.gd" id="2_p6bs0"]
+[ext_resource type="PackedScene" uid="uid://hyyn0rr2ag5d" path="res://small_obstacle.tscn" id="3_p6bs0"]
+[ext_resource type="PackedScene" uid="uid://bqde1w3sln0tq" path="res://rooms/room_1x1.tscn" id="4_htv0g"]
+[ext_resource type="Script" uid="uid://do2opr8xt0mpy" path="res://scripts/dungeon/room_template.gd" id="4_ii3ki"]
+
+[sub_resource type="Resource" id="Resource_rrosf"]
+script = ExtResource("1_8vypi")
+direction = 1
+
+[sub_resource type="Resource" id="Resource_8ohia"]
+script = ExtResource("1_8vypi")
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_unvj6"]
+script = ExtResource("1_8vypi")
+direction = 2
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_vjjqd"]
+script = ExtResource("1_8vypi")
+direction = 3
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_bkeaj"]
+script = ExtResource("2_p6bs0")
+local_position = Vector2(56, 48)
+scene = ExtResource("3_p6bs0")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[sub_resource type="Resource" id="Resource_tu44s"]
+script = ExtResource("2_p6bs0")
+local_position = Vector2(80, 48)
+scene = ExtResource("3_p6bs0")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[sub_resource type="Resource" id="Resource_7fqhv"]
+script = ExtResource("2_p6bs0")
+local_position = Vector2(240, 132)
+scene = ExtResource("3_p6bs0")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[sub_resource type="Resource" id="Resource_yfqcc"]
+script = ExtResource("2_p6bs0")
+local_position = Vector2(264, 132)
+scene = ExtResource("3_p6bs0")
+metadata/_custom_type_script = "uid://m6v26k7375n5"
+
+[resource]
+script = ExtResource("4_ii3ki")
+obstacles = Array[ExtResource("2_p6bs0")]([SubResource("Resource_bkeaj"), SubResource("Resource_tu44s"), SubResource("Resource_7fqhv"), SubResource("Resource_yfqcc")])
+door_slots = Array[ExtResource("1_8vypi")]([SubResource("Resource_rrosf"), SubResource("Resource_8ohia"), SubResource("Resource_unvj6"), SubResource("Resource_vjjqd")])
+scene = ExtResource("4_htv0g")
+weight = 10.0
+metadata/_custom_type_script = "uid://do2opr8xt0mpy"

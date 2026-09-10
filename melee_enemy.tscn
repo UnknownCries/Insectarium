@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dnlbm7celidtk"]
+
+[ext_resource type="Script" uid="uid://lttaexinfdnd" path="res://scripts/dungeon/enemy.gd" id="1_7k104"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/melee_enemy/beetle.png" id="2_beetle"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ln3ug"]
+radius = 8.0
+
+[node name="MeleeEnemy" type="CharacterBody2D" unique_id=2073718971]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("1_7k104")
+speed = 70.0
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=439194693]
+texture = ExtResource("2_beetle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2033061634]
+shape = SubResource("CircleShape2D_ln3ug")

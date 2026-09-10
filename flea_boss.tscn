@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/dungeon/flea_boss.gd" id="1"]
+[ext_resource type="PackedScene" path="res://bullet_blood.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://landing_telegraph.tscn" id="3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/flea_boss/lice.png" id="4_lice"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 20.0
+
+[node name="FleaBoss" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("1")
+bullet_scene = ExtResource("2")
+telegraph_scene = ExtResource("3")
+
+[node name="Visual" type="Sprite2D" parent="."]
+texture = ExtResource("4_lice")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")

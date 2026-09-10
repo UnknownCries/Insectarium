@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/dungeon/boss_guard_minion.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/boss_guard_minion/worker_bee.png" id="2_worker"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 8.0
+
+[node name="BossGuardMinion" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("1")
+attack_range = 18.0
+attack_damage = 1
+attack_cooldown = 1.0
+move_speed = 90.0
+orbit_radius = 32.0
+orbit_speed = 1.0
+
+[node name="Visual" type="Sprite2D" parent="."]
+texture = ExtResource("2_worker")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")

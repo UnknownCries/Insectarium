@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="RoomTemplate" format=3 uid="uid://b3gvk4wfbr62f"]
+
+[ext_resource type="Script" uid="uid://dosj80wis6uyf" path="res://scripts/dungeon/door_slot.gd" id="1_fjual"]
+[ext_resource type="Script" uid="uid://m6v26k7375n5" path="res://scripts/dungeon/obstacle_entry.gd" id="2_kdyk4"]
+[ext_resource type="Script" uid="uid://do2opr8xt0mpy" path="res://scripts/dungeon/room_template.gd" id="2_y4pdd"]
+[ext_resource type="PackedScene" uid="uid://eosq66gcaefh" path="res://rooms/room_1x1_start.tscn" id="3_rrosf"]
+
+[sub_resource type="Resource" id="Resource_rrosf"]
+script = ExtResource("1_fjual")
+direction = 1
+
+[sub_resource type="Resource" id="Resource_o42j6"]
+script = ExtResource("1_fjual")
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_fjxjb"]
+script = ExtResource("1_fjual")
+direction = 2
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[sub_resource type="Resource" id="Resource_xqxr4"]
+script = ExtResource("1_fjual")
+direction = 3
+metadata/_custom_type_script = "uid://dosj80wis6uyf"
+
+[resource]
+script = ExtResource("2_y4pdd")
+door_slots = Array[ExtResource("1_fjual")]([SubResource("Resource_rrosf"), SubResource("Resource_o42j6"), SubResource("Resource_fjxjb"), SubResource("Resource_xqxr4")])
+scene = ExtResource("3_rrosf")
+room_type = 0
+metadata/_custom_type_script = "uid://do2opr8xt0mpy"
