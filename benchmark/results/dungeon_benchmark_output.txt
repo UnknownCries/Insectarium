@@ -1,0 +1,130 @@
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+========================================================================
+INSECTARIUM - DUNGEON GENERATOR BENCHMARK
+========================================================================
+Godot: 4.7-stable (official)
+Templates: 1 start, 27 normal, empty=yes
+Runs per configuration: 1000
+
+------------------------------------------------------------------------
+target_room_count = 6   (1000 runs)
+------------------------------------------------------------------------
+  Generation time (ms)
+    mean   : 0.7662
+    min    : 0.5910
+    max    : 2.6880
+    stddev : 0.2190
+  Layout size
+    rooms mean/min/max : 8.00 / 8 / 8
+    reached target     : 100.0% (1000/1000)
+  Invariants
+    fully connected    : 100.0% (1000/1000)
+    no cell overlap    : 100.0% (1000/1000)
+    doors reciprocal   : 100.0% (1000/1000)
+  Special rooms
+    boss room placed   : 100.0% (1000/1000)
+    item room placed   : 100.0% (1000/1000)
+    boss is a dead end : 100.0% (1000/1000)
+    boss BFS distance  : mean 3.25
+      distance  1 :    7 run(s)
+      distance  2 :  182 run(s)
+      distance  3 :  434 run(s)
+      distance  4 :  313 run(s)
+      distance  5 :   60 run(s)
+      distance  6 :    4 run(s)
+
+------------------------------------------------------------------------
+target_room_count = 9   (1000 runs)
+------------------------------------------------------------------------
+  Generation time (ms)
+    mean   : 1.2106
+    min    : 0.8890
+    max    : 2.9710
+    stddev : 0.2844
+  Layout size
+    rooms mean/min/max : 11.00 / 11 / 11
+    reached target     : 100.0% (1000/1000)
+  Invariants
+    fully connected    : 100.0% (1000/1000)
+    no cell overlap    : 100.0% (1000/1000)
+    doors reciprocal   : 100.0% (1000/1000)
+  Special rooms
+    boss room placed   : 100.0% (1000/1000)
+    item room placed   : 100.0% (1000/1000)
+    boss is a dead end : 100.0% (1000/1000)
+    boss BFS distance  : mean 3.87
+      distance  1 :    4 run(s)
+      distance  2 :   73 run(s)
+      distance  3 :  312 run(s)
+      distance  4 :  360 run(s)
+      distance  5 :  178 run(s)
+      distance  6 :   62 run(s)
+      distance  7 :   10 run(s)
+      distance  8 :    1 run(s)
+
+------------------------------------------------------------------------
+target_room_count = 12   (1000 runs)
+------------------------------------------------------------------------
+  Generation time (ms)
+    mean   : 1.7393
+    min    : 1.1900
+    max    : 4.8350
+    stddev : 0.4324
+  Layout size
+    rooms mean/min/max : 14.00 / 14 / 14
+    reached target     : 100.0% (1000/1000)
+  Invariants
+    fully connected    : 100.0% (1000/1000)
+    no cell overlap    : 100.0% (1000/1000)
+    doors reciprocal   : 100.0% (1000/1000)
+  Special rooms
+    boss room placed   : 100.0% (1000/1000)
+    item room placed   : 100.0% (1000/1000)
+    boss is a dead end : 100.0% (1000/1000)
+    boss BFS distance  : mean 4.31
+      distance  1 :    1 run(s)
+      distance  2 :   41 run(s)
+      distance  3 :  218 run(s)
+      distance  4 :  341 run(s)
+      distance  5 :  230 run(s)
+      distance  6 :  130 run(s)
+      distance  7 :   30 run(s)
+      distance  8 :    8 run(s)
+      distance  9 :    1 run(s)
+
+========================================================================
+CSV - summary per configuration
+========================================================================
+target_rooms,runs,time_mean_ms,time_min_ms,time_max_ms,time_stddev_ms,rooms_mean,connected_pct,no_overlap_pct,boss_placed_pct,item_placed_pct,boss_dead_end_pct,boss_distance_mean
+6,1000,0.7662,0.5910,2.6880,0.2190,8.00,100.00,100.00,100.00,100.00,100.00,3.25
+9,1000,1.2106,0.8890,2.9710,0.2844,11.00,100.00,100.00,100.00,100.00,100.00,3.87
+12,1000,1.7393,1.1900,4.8350,0.4324,14.00,100.00,100.00,100.00,100.00,100.00,4.31
+
+CSV - boss room BFS distance distribution
+target_rooms,bfs_distance,run_count
+6,1,7
+6,2,182
+6,3,434
+6,4,313
+6,5,60
+6,6,4
+9,1,4
+9,2,73
+9,3,312
+9,4,360
+9,5,178
+9,6,62
+9,7,10
+9,8,1
+12,1,1
+12,2,41
+12,3,218
+12,4,341
+12,5,230
+12,6,130
+12,7,30
+12,8,8
+12,9,1
+
+Benchmark finished. Copy everything above into the report.
