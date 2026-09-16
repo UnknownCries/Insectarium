@@ -1,24 +1,7 @@
 extends Node
 
-## Standalone benchmark for the dungeon generator. Run this scene directly
-## (F6 in the Godot editor) - it never touches gameplay, never instances a
-## room scene, and never adds anything to the running game.
-##
-## It measures DungeonGenerator alone: how long a layout takes to produce,
-## and whether the layout satisfies the invariants the generator promises
-## (no two rooms share a cell, every room is reachable from the start room,
-## exactly one boss room and one item room, both of them dead ends).
-##
-## Output goes to the Output panel: a human-readable summary followed by a
-## CSV block that can be pasted straight into the report's charts.
-
-## Layout sizes to measure. The shipped game uses target_room_count = 6 on
-## floor 1 and +3 per floor (see dungeon_root.gd), so 6/9/12 covers exactly
-## the three floors a real run goes through.
 const ROOM_COUNTS: Array[int] = [6, 9, 12]
 
-## Runs per size. 1000 is enough for the failure-rate percentages below to
-## be meaningful to a tenth of a percent.
 const RUNS_PER_COUNT: int = 1000
 
 var _start_templates: Array[RoomTemplate] = []
@@ -55,11 +38,6 @@ func _ready() -> void:
 	get_tree().quit()
 
 
-## Reads the exact template arrays the shipped game uses, by instantiating
-## dungeon.tscn WITHOUT adding it to the tree - exported properties are
-## populated by instantiate(), while _ready() only runs on tree entry, so
-## no dungeon is actually built. Keeps the benchmark honest: it measures the
-## same 27 templates the player plays with, not a hand-copied subset.
 func _load_templates_from_game_scene() -> bool:
 	var scene: PackedScene = load("res://dungeon.tscn")
 	if scene == null:
@@ -148,11 +126,6 @@ func _benchmark_one_configuration(target_count: int) -> Dictionary:
 		"boss_distance_histogram": _histogram(boss_distances),
 	}
 
-
-## Checks every invariant dungeon_generator.gd is supposed to guarantee.
-## Returns a dictionary of independent pass/fail flags plus the facts the
-## report needs about the boss room, so one generate() call produces every
-## measurement at once.
 func _validate_layout(layout: Array[PlacedRoom]) -> Dictionary:
 	var result := {
 		"connected": false,
@@ -170,7 +143,7 @@ func _validate_layout(layout: Array[PlacedRoom]) -> Dictionary:
 	for room in layout:
 		by_id[room.id] = room
 
-	# --- Invariant 1: no grid cell is claimed by two rooms ---
+	#  no grid cell is claimed by two rooms
 	var cell_owner := {}
 	for room in layout:
 		for cell in room.occupied_cells:
@@ -178,7 +151,7 @@ func _validate_layout(layout: Array[PlacedRoom]) -> Dictionary:
 				result["no_overlap"] = false
 			cell_owner[cell] = room.id
 
-	# --- Invariant 2: every connection is mutual (A->B implies B->A) ---
+	# every connection is mutual (A->B implies B->A)
 	for room in layout:
 		for slot in room.world_door_slots:
 			var other_id: int = slot["connected_to"]
@@ -195,11 +168,11 @@ func _validate_layout(layout: Array[PlacedRoom]) -> Dictionary:
 			if not found:
 				result["reciprocal"] = false
 
-	# --- Invariant 3: every room is reachable from the start room (id 0) ---
+	# every room is reachable from the start room (id 0)
 	var distances := _bfs_distances(by_id, 0)
 	result["connected"] = distances.size() == layout.size()
 
-	# --- Special rooms ---
+	# Special rooms
 	for room in layout:
 		if room.room_type == RoomTemplate.RoomType.BOSS and result["boss_id"] == -1:
 			result["boss_id"] = room.id
@@ -211,9 +184,6 @@ func _validate_layout(layout: Array[PlacedRoom]) -> Dictionary:
 	return result
 
 
-## Same BFS dungeon_generator.gd uses to pick the boss room, re-implemented
-## here so the benchmark verifies the result independently instead of
-## trusting the generator's own bookkeeping.
 func _bfs_distances(by_id: Dictionary, start_id: int) -> Dictionary:
 	if not by_id.has(start_id):
 		return {}
@@ -229,7 +199,6 @@ func _bfs_distances(by_id: Dictionary, start_id: int) -> Dictionary:
 	return distances
 
 
-## Number of rooms this room is connected to. A genuine dead end has 1.
 func _degree(room: PlacedRoom) -> int:
 	var count := 0
 	for slot in room.world_door_slots:
@@ -265,8 +234,6 @@ func _stddev(values: Array[float]) -> float:
 		sum_sq += (v - m) * (v - m)
 	return sqrt(sum_sq / float(values.size() - 1))
 
-
-## distance -> how many runs had the boss room at that BFS distance.
 func _histogram(values: Array[int]) -> Dictionary:
 	var histogram := {}
 	for v in values:
@@ -310,8 +277,6 @@ func _print_report(r: Dictionary) -> void:
 	print("")
 
 
-## CSV for the report's charts. Printed as one block so it can be selected
-## and pasted into pgfplots / a spreadsheet without hand-editing.
 func _print_csv(results: Array[Dictionary]) -> void:
 	print("=".repeat(72))
 	print("CSV - summary per configuration")
