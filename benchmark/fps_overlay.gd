@@ -1,16 +1,5 @@
 extends CanvasLayer
 
-## Optional on-screen performance readout, for capturing the FPS figures the
-## report needs without reading them off the editor's Debugger panel.
-##
-## Not part of the game. To use it, add this script as an autoload
-## (Project > Project Settings > Globals > Add, path res://benchmark/fps_overlay.gd),
-## run the game, and press F3 to toggle the readout. Remove the autoload
-## again before exporting a build.
-##
-## The game renders at a 320x180 viewport, so the label is deliberately tiny
-## and pinned to the top-right corner, clear of the HUD in the top-left.
-
 const TOGGLE_KEY := KEY_F3
 
 var _label: Label
@@ -18,8 +7,6 @@ var _visible: bool = true
 
 
 func _ready() -> void:
-	# Must keep running while the tree is paused, otherwise the readout
-	# freezes on the pause screen exactly when it is easiest to screenshot.
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	layer = 128  # above the HUD and every menu overlay
 
@@ -47,9 +34,6 @@ func _process(_delta: float) -> void:
 	if not _visible:
 		return
 
-	# get_nodes_in_group() every frame is fine here - this overlay is a
-	# measurement tool, not shipped code, and the counts are what the
-	# report's "FPS vs. number of pathfinding enemies" table needs.
 	var enemies := get_tree().get_nodes_in_group("enemies").size()
 	var bullets := get_tree().get_nodes_in_group("bullets").size()
 
