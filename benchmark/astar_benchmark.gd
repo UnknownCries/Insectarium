@@ -1,18 +1,7 @@
 extends Node
 
-## Standalone benchmark for the A* pathfinding layer. Like
-## dungeon_benchmark.gd it never touches gameplay - but unlike a hand-written
-## reimplementation, it drives the REAL code path: it instantiates the actual
-## room scenes and calls their real setup_room(), so the A* grid measured
-## here is byte-for-byte the grid enemies path on during play.
-##
-## Run this scene directly (F6). Results print to the Output panel.
-
-## Random start/goal pairs queried per room template.
 const QUERIES_PER_TEMPLATE: int = 200
 
-## Must match room_scene_base.gd's own grid step - the benchmark converts
-## grid cells back to local pixels the same way the enemies do.
 const GRID_STEP: float = 24.0
 
 var _normal_templates: Array[RoomTemplate] = []
@@ -42,9 +31,6 @@ func _ready() -> void:
 	print("")
 	print("Benchmark finished.")
 
-	# Let the queued room nodes actually finish freeing before tearing the
-	# engine down - quitting the same frame can crash Godot's headless
-	# shutdown while a TileMap is still pending deletion.
 	await get_tree().process_frame
 	await get_tree().process_frame
 	get_tree().quit()
@@ -63,9 +49,6 @@ func _load_templates_from_game_scene() -> bool:
 		return false
 	return true
 
-
-## Builds one real room from `template`, then times grid construction and a
-## batch of random path queries on it.
 func _measure_template(template: RoomTemplate) -> Dictionary:
 	if template == null or template.scene == null:
 		return {}
@@ -74,9 +57,7 @@ func _measure_template(template: RoomTemplate) -> Dictionary:
 	var room_node: Node = template.scene.instantiate()
 	add_child(room_node)
 
-	# setup_room() builds walls/floor/obstacles and then the A* grid. Timing
-	# it whole would measure scene construction too, so the grid is rebuilt
-	# and timed separately below, after the obstacles exist.
+	
 	room_node.setup_room(placed, null)
 	await get_tree().process_frame
 
@@ -142,17 +123,6 @@ func _collect_walkable(astar: AStarGrid2D) -> Array[Vector2i]:
 				points.append(pt)
 	return points
 
-
-## Splits the walkable cells into connected components under EXACTLY the
-## movement rule AStarGrid2D is configured with in room_scene_base.gd
-## (4-directional, plus a diagonal step only when both of the orthogonal
-## cells it cuts between are free - DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES).
-##
-## More than one component means part of the room is unreachable by
-## pathfinding from the rest of it, which is what makes get_point_path()
-## return an empty path for some start/goal pairs.
-##
-## Returns component sizes, largest first.
 func _walkable_components(astar: AStarGrid2D, walkable: Array[Vector2i]) -> Array[int]:
 	var free_set := {}
 	for pt in walkable:
@@ -196,8 +166,7 @@ func _walkable_components(astar: AStarGrid2D, walkable: Array[Vector2i]) -> Arra
 	return sizes
 
 
-## Resource filename without extension; falls back to a shape label for the
-## one template that lives inline inside dungeon.tscn rather than as a .tres.
+
 func _template_name(template: RoomTemplate) -> String:
 	if template.resource_path.is_empty():
 		return "inline_%dx_cells" % template.footprint.size()
@@ -235,8 +204,6 @@ func _print_per_template_table(rows: Array[Dictionary]) -> void:
 	print("")
 
 
-## Groups by footprint size, which is what the report's chart plots:
-## pathfinding cost against room area.
 func _print_grouped_by_size(rows: Array[Dictionary]) -> void:
 	var groups := {}
 	for r in rows:
@@ -291,10 +258,6 @@ func _print_csv(rows: Array[Dictionary]) -> void:
 
 	_print_fragmented(rows)
 
-
-## Singles out the templates whose walkable grid is not one piece - the
-## report discusses these as a measured limitation rather than a vague
-## "enemies sometimes get stuck".
 func _print_fragmented(rows: Array[Dictionary]) -> void:
 	print("")
 	print("=".repeat(78))
